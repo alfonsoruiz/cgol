@@ -19,7 +19,7 @@ function Grid(props) {
     for (let x = 0; x < rows; x++) {
       arr[x] = [];
       for (let y = 0; y < columns; y++) {
-        arr[x][y] = 0;
+        arr[x][y] = false;
       }
     }
 
@@ -27,10 +27,8 @@ function Grid(props) {
   }
 
   function toggleBox(row, col) {
-    console.log(grid[row][col]);
-    setGrid((grid[row][col] = 1));
-    console.log(grid[row][col]);
-    console.log(grid);
+    grid[row][col] = !grid[row][col];
+    setGrid([...grid]);
   }
 
   return (
@@ -41,7 +39,7 @@ function Grid(props) {
             key={`${x}${y}`}
             id={`${x}${y}`}
             toggleBox={toggleBox}
-            boxState={grid[x][y] === 0 ? 'off' : 'on'}
+            boxState={grid[x][y] === false ? 'off' : 'on'}
           />
         )),
       )}

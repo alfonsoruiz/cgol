@@ -5,14 +5,14 @@ function Box(props) {
   const state = props.boxState;
 
   function selectBox(id) {
-    const row = id[0];
-    const col = id[1];
+    const row = parseInt(id[0]);
+    const col = parseInt(id[1]);
 
     props.toggleBox(row, col);
   }
 
   return (
-    <div className='box' onClick={() => selectBox(id)}>
+    <div className={`box`} onClick={() => selectBox(id)}>
       {state}
     </div>
   );
