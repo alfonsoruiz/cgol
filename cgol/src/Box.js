@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 
 function Box(props) {
-  const [on, setOn] = useState(0);
+  const id = props.id;
+  const state = props.boxState;
 
-  return <div className='box'></div>;
+  function selectBox(id) {
+    const row = id[0];
+    const col = id[1];
+
+    props.toggleBox(row, col);
+  }
+
+  return (
+    <div className='box' onClick={() => selectBox(id)}>
+      {state}
+    </div>
+  );
 }
 
 export default Box;

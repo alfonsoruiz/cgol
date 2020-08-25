@@ -9,11 +9,15 @@ function App() {
   const [rows, setRows] = useState(25);
   const [generation, setGeneration] = useState(0);
 
+  function simulate() {
+    return;
+  }
+
   return (
     <div className='app'>
       <h1>CGOL</h1>
       <Controls />
-      <Grid rows={rows} columns={columns} />
+      <Grid rows={rows} columns={columns} simulate={simulate} />
       <GenerationCounter generations={generation} />
     </div>
   );
