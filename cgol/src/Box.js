@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 
 function Box(props) {
   const id = props.id;
-  const state = props.boxState;
+  const row = props.row;
+  const col = props.col;
+  const boxState = props.boxState;
 
-  function selectBox(id) {
-    const row = parseInt(id[0]);
-    const col = parseInt(id[1]);
-
+  // Handle click on box component
+  function handleBoxClick() {
     props.toggleBox(row, col);
   }
 
   return (
-    <div className={`box`} onClick={() => selectBox(id)}>
-      {state}
+    <div
+      className={`box ${boxState === true ? 'on' : 'off'}`}
+      onClick={() => handleBoxClick(id)}
+    >
+      {boxState}
     </div>
   );
 }

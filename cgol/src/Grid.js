@@ -6,14 +6,15 @@ function Grid(props) {
   const columns = props.columns;
   const [grid, setGrid] = useState([]);
 
+  // Run once when component mounts
   useEffect(() => {
     createGrid();
   }, []);
 
-  useEffect(() => {
-    console.log('grid Changed');
-  }, [grid]);
+  // Update on every grid change
+  useEffect(() => {}, [grid]);
 
+  // Creates 2D array with n rows and columns
   function createGrid() {
     const arr = [];
     for (let x = 0; x < rows; x++) {
@@ -26,6 +27,7 @@ function Grid(props) {
     setGrid(arr);
   }
 
+  // Toggle value of box at specified grid location
   function toggleBox(row, col) {
     grid[row][col] = !grid[row][col];
     setGrid([...grid]);
@@ -38,8 +40,10 @@ function Grid(props) {
           <Box
             key={`${x}${y}`}
             id={`${x}${y}`}
+            row={x}
+            col={y}
             toggleBox={toggleBox}
-            boxState={grid[x][y] === false ? 'off' : 'on'}
+            boxState={grid[x][y] === true ? true : false}
           />
         )),
       )}
