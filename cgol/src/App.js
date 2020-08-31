@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
-import Controls from './Controls';
-import Grid from './Grid';
-import GenerationCounter from './GenerationCounter';
+import Game from './Game';
 import './App.css';
 
 function App() {
   const [columns, setColumns] = useState(25);
   const [rows, setRows] = useState(25);
-  const [generation, setGeneration] = useState(0);
-
-  function simulate() {
-    return;
-  }
 
   return (
     <div className='app'>
       <h1>CGOL</h1>
-      <Controls />
-      <Grid rows={rows} columns={columns} simulate={simulate} />
-      <GenerationCounter generations={generation} />
+      <Game rows={rows} columns={columns} />
     </div>
   );
 }

@@ -1,12 +1,22 @@
 import React from 'react';
-import StartButton from './StartButton';
-import StopButton from './StopButton';
 
 function Controls(props) {
+  function handlePlay() {
+    props.play();
+  }
+
+  function handleStop() {
+    props.stop();
+  }
+
+  function handleClear() {
+    props.clear();
+  }
   return (
     <div className='controls'>
-      <StartButton />
-      <StartButton />
+      <button onClick={() => handleClear()}>Clear</button>
+      <button onClick={() => handlePlay()}>Play</button>
+      <button onClick={() => handleStop()}>Stop</button>
     </div>
   );
 }

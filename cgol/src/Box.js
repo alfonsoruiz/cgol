@@ -5,10 +5,15 @@ function Box(props) {
   const row = props.row;
   const col = props.col;
   const boxState = props.boxState;
+  const running = props.running;
 
-  // Handle click on box component
+  // Handle click on box component if not running
   function handleBoxClick() {
-    props.toggleBox(row, col);
+    if (running) {
+      return;
+    } else {
+      props.toggleBox(row, col);
+    }
   }
 
   return (

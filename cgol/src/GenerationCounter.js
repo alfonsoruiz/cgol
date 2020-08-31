@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function GenerationCounter(props) {
   return (
-    <div>
-      <h3>Generations: {props.generations}</h3>
+    <div className='gc'>
+      <h3>Generation: {props.generation}</h3>
     </div>
   );
 }
