@@ -7,7 +7,7 @@ import Presets from './Presets';
 function Grid(props) {
   const rows = props.rows;
   const columns = props.columns;
-  let [speed, setSpeed] = useState(500);
+  let [speed, setSpeed] = useState(1000);
   let [intervalId, setIntervalId] = useState(null);
   let [generation, setGeneration] = useState(0);
   const [grid, setGrid] = useState([]);
@@ -17,6 +17,14 @@ function Grid(props) {
   useEffect(() => {
     createGrid();
   }, []);
+
+  useEffect(() => {
+    if (running) {
+      const id = window.setInterval(simulate, speed);
+      setGeneration(generation + 1);
+      return () => window.clearInterval(id);
+    }
+  }, [running, grid]);
 
   // Creates 2D array with n rows and columns
   function createGrid() {
@@ -40,13 +48,10 @@ function Grid(props) {
 
   function play() {
     setRunning(true);
-    clearInterval(intervalId);
-    intervalId = setIntervalId(setInterval(simulate(), speed));
   }
 
   function stop() {
     setRunning(false);
-    clearInterval(intervalId);
   }
 
   function clear() {
@@ -149,7 +154,6 @@ function Grid(props) {
     }
 
     setGrid(gridTwo);
-    setGeneration(generation + 1);
   }
 
   return (
